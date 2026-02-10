@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Smita ❤️</title>
+  <title>For Smita ❤️ | Occasion Ready Day</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #ff758c, #ff7eb3);
       display: flex;
       flex-direction: column;
@@ -15,41 +15,85 @@
       align-items: center;
       font-family: Arial, sans-serif;
       overflow: hidden;
+      padding: 20px;
+      box-sizing: border-box;
     }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #c2185b;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      margin-bottom: 10px;
+    }
+
     h1 {
       color: white;
-      font-size: 2.2rem;
-      margin-bottom: 15px;
+      font-size: 2rem;
+      margin: 0 0 12px;
+      text-align: center;
     }
+
     video {
-      width: 85%;
-      max-width: 350px;
+      width: 100%;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      background: #000;
     }
+
+    .caption {
+      margin-top: 14px;
+      color: white;
+      font-size: 1rem;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
     button {
       margin-top: 15px;
+      width: 100%;
       padding: 10px 22px;
       border: none;
       border-radius: 20px;
       background: white;
       color: #ff4d6d;
       font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <div class="card">
+    <div class="badge">PRIVATE POST · OCCASION READY DAY</div>
+    <h1>For Smita ❤️</h1>
 
-<h1>I love you, Smita ❤️</h1>
+    <video id="loveVideo" controls playsinline>
+      <source src="https://drive.google.com/uc?export=download&id=1Ue7A_c8zWlQJp794AXGBLDyPqKu2f1LD" type="video/mp4">
+    </video>
 
-<video id="loveVideo" controls playsinline>
-  <source src="https://drive.google.com/uc?export=download&id=1Ue7A_c8zWlQJp794AXGBLDyPqKu2f1LD" type="video/mp4">
-</video>
+    <p class="caption">For Smita ❤️
+You make every ordinary day feel special.
+Happy Occasion Ready Day, my love.</p>
 
-<button onclick="document.getElementById('loveVideo').play()">
-  Tap to play ❤️
-</button>
-
+    <button onclick="document.getElementById('loveVideo').play()">
+      Tap to play ❤️
+    </button>
+  </div>
 </body>
 </html>
