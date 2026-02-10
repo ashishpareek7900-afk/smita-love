@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #ff758c, #ff7eb3);
       display: flex;
       flex-direction: column;
@@ -15,19 +15,27 @@
       align-items: center;
       font-family: Arial, sans-serif;
       overflow: hidden;
-    }
-    h1 {
       color: white;
-      font-size: 2.2rem;
-      margin-bottom: 15px;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
     }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0 0 15px;
+    }
+
     video {
       width: 85%;
       max-width: 350px;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.15);
     }
-    button {
+
+    button,
+    a {
       margin-top: 15px;
       padding: 10px 22px;
       border: none;
@@ -36,20 +44,59 @@
       color: #ff4d6d;
       font-size: 16px;
       cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    p {
+      margin-top: 10px;
+      max-width: 420px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
+  <h1>I love you, Smita ❤️</h1>
 
-<h1>I love you, Smita ❤️</h1>
+  <video id="loveVideo" controls playsinline>
+    Sorry, your browser doesn’t support HTML5 video.
+  </video>
 
-<video id="loveVideo" controls playsinline>
-  <source src="https://drive.google.com/uc?export=download&id=1Ue7A_c8zWlQJp794AXGBLDyPqKu2f1LD" type="video/mp4">
-</video>
+  <button id="playBtn">Tap to play ❤️</button>
+  <a id="fallbackLink" target="_blank" rel="noopener noreferrer">Open video in Google Drive</a>
+  <p id="statusMsg"></p>
 
-<button onclick="document.getElementById('loveVideo').play()">
-  Tap to play ❤️
-</button>
+  <script>
+    const driveShareUrl = 'https://drive.google.com/file/d/1Ue7A_c8zWlQJp794AXGBLDyPqKu2f1LD/view?usp=sharing';
+    const video = document.getElementById('loveVideo');
+    const fallbackLink = document.getElementById('fallbackLink');
+    const statusMsg = document.getElementById('statusMsg');
 
+    function getDriveFileId(url) {
+      const idByPath = url.match(/\/file\/d\/([^/]+)/);
+      if (idByPath) return idByPath[1];
+
+      const idByQuery = url.match(/[?&]id=([^&]+)/);
+      if (idByQuery) return idByQuery[1];
+
+      return null;
+    }
+
+    const fileId = getDriveFileId(driveShareUrl);
+    fallbackLink.href = driveShareUrl;
+
+    if (fileId) {
+      video.src = `https://drive.google.com/uc?export=download&id=${fileId}`;
+      statusMsg.textContent = 'If the video does not load in-page, use the Google Drive button below.';
+    } else {
+      statusMsg.textContent = 'Could not parse the Google Drive link. Use the button below to open it directly.';
+    }
+
+    document.getElementById('playBtn').addEventListener('click', () => {
+      video.play();
+    });
+  </script>
 </body>
 </html>
